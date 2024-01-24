@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
-const fs = require('fs');
 request(process.argv[2], (error, response, body) => {
+  const fs = require('fs');
   if (error) {
     console.error(`Error: ${error.message}`);
     process.exit(1);
