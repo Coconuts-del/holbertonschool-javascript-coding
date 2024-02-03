@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require('node:http');
 const countStudents = require('./3-read_file_async');
 
 const hostname = '127.0.0.1';
@@ -21,7 +21,8 @@ const app = http.createServer(async (req, res) => {
 
       res.end(`This is the list of our students\n${consoleOutput.trim()}`);
     } catch (error) {
-      res.end(`Error: ${error.message}`);
+      res.statusCode = 400;
+      res.end(`This is the list of our students\n${error.message}`);
     }
   } else {
     res.statusCode = 404;
