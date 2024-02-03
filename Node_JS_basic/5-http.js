@@ -1,4 +1,4 @@
-const http = require('node:http');
+const http = require('http');
 const countStudents = require('./3-read_file_async');
 
 const hostname = '127.0.0.1';
