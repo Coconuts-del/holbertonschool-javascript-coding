@@ -32,12 +32,14 @@ class StudentsController {
 
       if (major !== 'CS' && major !== 'SWE') {
         res.status(500).send('Major parameter must be CS or SWE');
+        return;
       }
 
       const data = await readDatabase(process.argv[2]);
 
       if (!data) {
-        res.status(500).send('Error: Failed to load data from the database file.');
+        res.status(500).send('Cannot load the database');
+        return;
       }
 
       const studentNames = data[major] || [];
@@ -46,7 +48,7 @@ class StudentsController {
       const message = `List: ${studentNames.join(', ')}`;
       res.status(200).send(message);
     } catch (error) {
-      res.status(500).send('Error: Failed to load the database file.');
+      res.status(500).send('Cannot load the database');
     }
   }
 }
